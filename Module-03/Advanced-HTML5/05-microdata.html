@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microdata Demo</title>
+</head>
+<body>
+    <h1>Microdata Demo</h1>
+    <h2>Product - Example</h2>
+    <div itemscope itemtype="https://schema.org/Product">
+      <h2 itemprop="name">Awesome Headphones</h2>
+      <p>Price: <span itemprop="price">$49.99</span></p>
+      <p>Category: <span itemprop="category">Electronics</span></p>
+    </div>
+    <h2>Person - Example</h2>
+    <div itemscope itemtype="https://schema.org/Person">
+      <span itemprop="name">Alice Johnson</span>
+      <img src="alice.jpg" alt="Photo of Alice" itemprop="image" />
+      <span>Email: <span itemprop="email">alice@example.com</span></span>
+    </div>
+
+</body>
+</html>
