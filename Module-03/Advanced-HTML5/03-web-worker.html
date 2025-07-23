@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Web Worker Example</title>
+</head>
+<body>
+  <h1>Web Worker Demo</h1>
+  <input type="number" id="input" placeholder="Enter Fibonacci number" />
+  <button id="start">Calculate</button>
+  <div id="result"></div>
+
+  <script>
+    // Create the Worker
+    const worker = new Worker('03-01-worker.js');
+
+    const input = document.getElementById('input');
+    const result = document.getElementById('result');
+    const button = document.getElementById('start');
+
+    button.addEventListener('click', () => {
+      const n = parseInt(input.value, 10);
+      result.textContent = 'Calculating...';
+
+      // Send the input to the Worker
+      worker.postMessage(n);
+    });
+
+    // Listen for messages back from the Worker
+    worker.onmessage = function(event) {
+      result.textContent = `Result: ${event.data}`;
+    };
+  </script>
+</body>
+</html>
