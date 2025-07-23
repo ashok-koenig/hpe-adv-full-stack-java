@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <h1>Products App</h1>
-      <ProductList />
+      <ProductList products = {products}/>
     </>
   )
 }

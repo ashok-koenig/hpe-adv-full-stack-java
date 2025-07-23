@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ProductProps {
+export interface ProductProps {
     id: number;
     title: string;
     price: number
