@@ -7,11 +7,12 @@ export interface ProductProps {
 }
 
 export default function Product(props: ProductProps ) {
+    const {id, title, price} = props
   return (
     <div>
-        <p>ID: {props.id}</p>
-        <p>Title: {props.title}</p>
-        <p>Price: {props.price}</p>
+        <p>ID: {id}</p>
+        <p>Title: {title}</p>
+        <p>Price: {price}</p>
     </div>
   )
 }

@@ -11,7 +11,11 @@ export default function ProductList(props: ProductListProps) {
     <div>
         <h2>List of Products</h2>
         {
-            products.map((product )=> <Product id={product.id}  title={product.title} price={product.price} />)
+            products.map((product )=> <Product 
+                                        key={product.id} 
+                                        id={product.id}  
+                                        title={product.title} 
+                                        price={product.price} />)
         }
         {/* <Product id={1} title="Product 1" price={1234}/>
         <Product id={2} title="Product 2" price={4567}/> */}
