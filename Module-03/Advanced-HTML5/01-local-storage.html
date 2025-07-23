@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Demo</title>
+</head>
+<body>
+    <h1>Local Storage demo</h1>
+    <button id="save">Save Name</button>
+<button id="load">Load Name</button>
+<input id="nameInput" placeholder="Enter your name" />
+
+<script>
+  document.getElementById('save').addEventListener('click', function() {
+    const name = document.getElementById('nameInput').value;
+    sessionStorage.setItem('username', name);
+    alert('Saved!');
+  });
+
+  document.getElementById('load').addEventListener('click', function() {
+    const name = sessionStorage.getItem('username');
+    alert('Loaded: ' + name);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive images - demo</title>
+</head>
+<body>
+    <h1>Responsive image demo</h1>
+    <img 
+  src="images/small.jpg"
+  srcset="
+    images/small.jpg 480w,
+    images/medium.jpg 800w,
+    images/large.jpg 1200w
+  "
+  sizes="
+    (max-width: 600px) 480px,
+    (max-width: 900px) 800px,
+    1200px
+  "
+  alt="Example image">
+
+</body>
+</html>
