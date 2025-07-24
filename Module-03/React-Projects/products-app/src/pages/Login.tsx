@@ -9,10 +9,12 @@ export default function Login(props: {updateLoginStatus: (status: boolean) => vo
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
     const handleSubmit = (e: any) => {
         e.preventDefault();
         setErrorMessage('')
-        axios.post("http://localhost:8080/api/auth/login",{username, password}).then((response)=>{
+        axios.post(API_BASE_URL+"/auth/login",{username, password}).then((response)=>{
             if(response.data.token){
                 localStorage.setItem("auth-token", response.data.token)
                 updateLoginStatus(true)

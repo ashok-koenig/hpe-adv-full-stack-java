@@ -1,0 +1,21 @@
+@use "sass:color";
+// Variables
+$primary: #3498db;
+$padding: 1rem;
+
+// Mixin
+@mixin rounded {
+  border-radius: 10px;
+  padding: $padding;
+}
+
+// Nesting + Usage
+.button {
+  background: $primary;
+  color: white;
+  @include rounded;
+
+  &:hover {
+    background: color.adjust($primary);
+  }
+}

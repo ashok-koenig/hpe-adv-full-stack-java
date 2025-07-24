@@ -1,0 +1,11 @@
+.button {
+  background: #3498db;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.button:hover {
+  background: #3498db;
+}
+
+/*# sourceMappingURL=styles.css.map */
