@@ -5,11 +5,12 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Products from './pages/Products'
 import PageNotFound from './pages/PageNotFound'
-import { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import ProtectRoute from './pages/ProtectRoute'
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import Checkout from './pages/Checkout'
+// import Checkout from './pages/Checkout'
+const Checkout = React.lazy(()=> import('./pages/Checkout'))
 
 function App() {
 
@@ -28,7 +29,9 @@ function App() {
         {index: true, element: <Home />},
         {path: 'login', element: <Login updateLoginStatus={updateLoginStatus}/>},
         {path: 'products', element: <ProtectRoute isLoggedIn={isLoggedIn}> <Products /> </ProtectRoute> },
-        {path: "checkout", element: <Checkout />}
+        {path: "checkout", element: <Suspense fallback={<p>Loading...</p>}>
+            <Checkout />
+        </Suspense>}
       ]
     }
   ])

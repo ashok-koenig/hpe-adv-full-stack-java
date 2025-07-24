@@ -14,9 +14,10 @@ export interface Product{
 export default function Products() {
     const [products, setProducts] = useState([])
 
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     useEffect(()=>{
         const token = localStorage.getItem('auth-token')
-        axios.get("http://localhost:8080/api/products", {
+        axios.get(API_BASE_URL +"/products", {
             headers: {
                 Authorization: "Bearer "+token
             }
