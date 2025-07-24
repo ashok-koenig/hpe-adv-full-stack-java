@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login(props: {updateLoginStatus: (status: boolean) => void}) {
+    const {updateLoginStatus} = props
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
@@ -14,6 +15,7 @@ export default function Login() {
         axios.post("http://localhost:8080/api/auth/login",{username, password}).then((response)=>{
             if(response.data.token){
                 localStorage.setItem("auth-token", response.data.token)
+                updateLoginStatus(true)
                 navigate("/products")
             }else{
                 setErrorMessage("Error getting token")

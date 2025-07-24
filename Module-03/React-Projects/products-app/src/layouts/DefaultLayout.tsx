@@ -1,6 +1,18 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
-export default function DefaultLayout() {
+interface DefaultLayoutProps {
+    isLoggedIn: boolean
+    updateLoginStatus: (status: boolean) => void
+}
+
+export default function DefaultLayout(props: DefaultLayoutProps) {
+    const {isLoggedIn, updateLoginStatus} = props
+    const navigate = useNavigate()
+    const handleLogout = () =>{
+        localStorage.removeItem("auth-token")
+        updateLoginStatus(false)
+        navigate("/login")
+    }
   return (
     <div>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -13,10 +25,11 @@ export default function DefaultLayout() {
             <div className="navbar-nav">                
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/products">Products</Link>
-                <Link className="nav-link" to="/login">Login</Link>
+                {!isLoggedIn && <Link className="nav-link" to="/login">Login</Link>}
             </div>
             </div>
         </div>
+        {isLoggedIn && <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>}
         </nav>
         <div className="container">
             <Outlet/>
