@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import type { RootState } from "../redux/store";
 
 interface DefaultLayoutProps {
     isLoggedIn: boolean
@@ -7,6 +9,7 @@ interface DefaultLayoutProps {
 
 export default function DefaultLayout(props: DefaultLayoutProps) {
     const {isLoggedIn, updateLoginStatus} = props
+    const {cartProduct} = useSelector<RootState, any>((state)=> state.cart)
     const navigate = useNavigate()
     const handleLogout = () =>{
         localStorage.removeItem("auth-token")
@@ -25,6 +28,7 @@ export default function DefaultLayout(props: DefaultLayoutProps) {
             <div className="navbar-nav">                
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/products">Products</Link>
+                {cartProduct && <Link className="nav-link" to="/checkout">Checkout</Link>}
                 {!isLoggedIn && <Link className="nav-link" to="/login">Login</Link>}
             </div>
             </div>

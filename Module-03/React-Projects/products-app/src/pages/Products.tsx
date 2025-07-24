@@ -1,7 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import type { AppDispatch } from "../redux/store"
+import { buyNow } from "../redux/CartSlice"
 
-interface Product{
+export interface Product{
     id: number
     title: string
     category: string
@@ -22,6 +25,9 @@ export default function Products() {
             setProducts(response.data)
         })
     },[])
+
+    const dispatch = useDispatch<AppDispatch>()
+
   return (
     <div>
         <h1>List of Products</h1>
@@ -32,6 +38,7 @@ export default function Products() {
                     <th>Title</th>
                     <th>Category</th>
                     <th>Price</th>
+                    <th>Buy Now</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +48,9 @@ export default function Products() {
                         <td>{product.title}</td>
                         <td>{product.category}</td>
                         <td>{product.price}</td>
+                        <td>
+                            <button className="btn btn-success" onClick={()=> dispatch(buyNow(product))}>Buy Now</button>
+                        </td>
                     </tr>)
                 }
             </tbody>

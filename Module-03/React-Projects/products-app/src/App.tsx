@@ -7,6 +7,9 @@ import Products from './pages/Products'
 import PageNotFound from './pages/PageNotFound'
 import { useState } from 'react'
 import ProtectRoute from './pages/ProtectRoute'
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import Checkout from './pages/Checkout'
 
 function App() {
 
@@ -24,12 +27,17 @@ function App() {
       children: [
         {index: true, element: <Home />},
         {path: 'login', element: <Login updateLoginStatus={updateLoginStatus}/>},
-        {path: 'products', element: <ProtectRoute isLoggedIn={isLoggedIn}> <Products /> </ProtectRoute> }
+        {path: 'products', element: <ProtectRoute isLoggedIn={isLoggedIn}> <Products /> </ProtectRoute> },
+        {path: "checkout", element: <Checkout />}
       ]
     }
   ])
 
-  return (<RouterProvider router={router} />)
+  return (
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+  )
 }
 
 export default App
