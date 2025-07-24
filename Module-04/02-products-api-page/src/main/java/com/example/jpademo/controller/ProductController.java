@@ -3,6 +3,8 @@ package com.example.jpademo.controller;
 import com.example.jpademo.entity.Product;
 import com.example.jpademo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +18,8 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts(){
-        return ResponseEntity.ok(productService.getAllProducts());
+    public ResponseEntity<Page<Product>> getAllProducts(Pageable pageable){
+        return ResponseEntity.ok(productService.getAllProducts(pageable));
     }
 
     @PostMapping
